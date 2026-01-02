@@ -1,0 +1,28 @@
+{% extends "base.html"%} {% block title %}Task tracker{% endblock %} {% block
+content %}
+<header class="header">
+  <div class="nav-bar">
+    <h1 class="heading-main">Task tracker</h1>
+    <div class="nav-links">
+      <a class="btn form-btn home" href="/sign_up" data-i18n="signUp"></a>
+      <a class="btn form-btn home" href="/login" data-i18n="login"></a>
+    </div>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-text-box">
+    <h1 class="heading-main margin-bt-sm">Task tracker</h1>
+    <p class="default-text" data-i18n="projectDescription"></p>
+  </div>
+  <div class="hero-img-box">
+    <img
+      class="hero-img"
+      src="{{ url_for('static',filename='img/app-showcase.png') }}"
+    />
+  </div>
+</section>
+<p class="copyright">
+  Copyright &copy; <span class="year">2026</span> by Vladyslav Tokarskyi.
+</p>
+
+{%endblock%}

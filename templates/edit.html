@@ -1,0 +1,38 @@
+{% extends "base.html"%} {% block title %}Task tracker - Edit task{% endblock %} {% block
+content %}
+  <div class="main-box">
+    
+  <h1 class="heading-main" id="task-heading" data-i18n="editTask"></h1>
+  <p class="error-handling {% if error %}show-error{% endif %}">Erorr</p>
+
+ <div class="form-box">
+<form class="form-style" method="POST">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="input-divider-dashboard">
+      <p class="form-text default-text " data-i18n="changeTask"></p>
+      <input class="input-style" name="task" value="{{ task[0] }}" required>
+    </div>
+    <div class="input-divider-dashboard">
+      <p class="form-text default-text" data-i18n="deadline"></p>
+      <input  class="input-style" type="date" name="deadline" value="{{ task[1] }}" required>
+    </div>
+    <div class="input-divider-dashboard">
+      <p class="form-text default-text" data-i18n="priority"></p>
+    
+      <select name="priority" class="dropdown-menu">
+          <option value="normal" {% if task[2]=='normal' %}selected{% endif %} data-i18n="priority.normal"></option>
+          <option value="important" {% if task[2]=='important' %}selected{% endif %} data-i18n="priority.important"></option>
+          <option value="urgent" {% if task[2]=='urgent' %}selected{% endif %} data-i18n="priority.urgent"></option>
+      </select>
+    </div>
+
+    <button class="btn form-btn" type="submit" data-i18n="save"></button>
+</form>
+</div>
+<div class="extra-box">
+              <p class="controls-text" data-i18n="withoutChanges"></p>
+              <a class="back-btn" href="/dashboard" data-i18n="goBack"></a>
+            </div>
+
+</div>
+{% endblock %}

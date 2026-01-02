@@ -1,0 +1,34 @@
+{% extends "base.html"%} {% block title %}Task tracker - Login{% endblock %} {% block
+content %}
+    <div class="main-box">
+    <h1 class="heading-main  " id="login_heading" data-i18n="login"></h1>
+    <p class="error-handling {% if error %}show-error{% endif %}">{{ message }}</p>
+    <div class="form-box">
+        <form class="form-style" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="input-divider">
+            <p class="form-text default-text" data-i18n="username"></p>
+            <input class="input-style" name="username" />
+          </div>
+          <div class="input-divider">
+            <p class="form-text default-text" data-i18n="password"></p>
+            <input class="input-style" type="password" name="password" />
+          </div>
+          <div class="input-divider stay-logged-in">
+            <input type="checkbox" name="remember" class="done-btn"/>
+            <p class="form-text default-text" data-i18n="stayLoggedIn"></p>
+            <!-- <a class="done-btn" href="#">
+            <ion-icon
+              name="checkmark-outline"
+              class="checkbox {% if status == 1 %}done-checkmark{% endif %}"
+            ></ion-icon>
+          </a> -->
+          </div>
+          <button class="btn form-btn  login" type="submit" data-i18n="login"></button>
+          <div class="extra-box">
+              <p class="controls-text" data-i18n="dontHaveAnAccount"></p>
+              <a class="back-btn" href="/sign_up" data-i18n="signUp"></a>
+            </div>
+        </div>
+        </div>
+ {% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html"%} {% block title %}Task tracker - Sign up{% endblock %} {% block
+content %}
+    <div class="main-box">
+      <h1 class="heading-main login-h " id="sign_up_heading" data-i18n="signUp"></h1>
+      <p class="error-handling {% if error %}show-error{% endif %}">{{ message }}</p>
+      <div class="form-box">
+        <form class="form-style" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="input-divider">
+            <p class="form-text default-text" data-i18n="username"></p>
+            <input class="input-style" name="username" />
+          </div>
+          <div class="input-divider">
+            <p class="form-text default-text" data-i18n="password"></p>
+            <input class="input-style" type="password" name="password" />
+          </div>
+          <button class="form-btn login" type="submit" data-i18n="signUp"></button>
+          <div class="extra-box">
+              <p class="controls-text" data-i18n="alreadyHaveAccount"></p>
+              <a class="back-btn" href="/login" data-i18n="backToLogin"></a>
+            </div>
+        </div>
+      </form>
+    </div>
+{% endblock %}

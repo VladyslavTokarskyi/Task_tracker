@@ -1,0 +1,40 @@
+{% extends "base.html"%} {% block title %}Task tracker - Delete Account{% endblock %} {% block
+content %}
+
+    <div class="main-box">
+    <h1 class="heading-main  " id="delete-heading" data-i18n="deleteAccount"></h1>
+      <p class="error-handling {% if error %}show-error{% endif %}">Account not found or invalid username/password.</p>
+    <div class="form-box">
+        <form class="form-style" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="input-divider">
+            <p class="form-text default-text" data-i18n="username"></p>
+            <input class="input-style" name="username" />
+          </div>
+          <div class="input-divider">
+            <p class="form-text default-text" data-i18n="password"></p>
+            <input class="input-style" type="password" name="password" />
+          </div>
+          {% if session.get("account_exists") %}
+          <div class="confirm-popup " id="confirm-popup">
+            <p class="form-text default-text" data-i18n="confirmDeleteAccount"></p>
+            <div class="confirm-box">
+              <a class="btn form-btn  delete" href="/cancel_delete" data-i18n="cancel"></a>
+              <a href="/delete_account_confirmed" class="btn delete-btn delete"  id="button-confirm" data-i18n="delete"></a>
+            </div>
+          </div>
+          <button type="button" class="btn delete-btn none-input" id="button-delete" data-i18n="delete"></button>
+          
+          {% else %}
+          <button type="submit" class="btn delete-btn" id="button-delete" data-i18n="delete"></button>
+          {% endif %}
+          
+          
+          <div class="extra-box">
+              <p class="controls-text" data-i18n="decidedNotDeleteAccount"></p>
+              <a class="back-btn" href="/dashboard" data-i18n="goBack"></a>
+          </div>
+        </div>
+        </div>
+{% endblock %}
+

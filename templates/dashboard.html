@@ -1,0 +1,190 @@
+{% extends "base.html"%} {% block title %}Task tracker - Dashboard{% endblock %}
+{% block content %}
+
+<div class="dashboard-nav-m">
+  <div class="heading-nav">
+    <h1 class="heading-main nav-name" data-i18n="appName"></h1>
+    <button class="btn-mobile-nav">
+      <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+      <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+    </button>
+  </div>
+  <div class="main-nav">
+    <ul class="main-nav-list">
+      <li>
+        <a href="/dashboard" class="default-link link-nav selected">
+          <ion-icon name="desktop-outline"></ion-icon>
+          <p class="default-text nav-text" data-i18n="dashboard"></p>
+        </a>
+      </li>
+      <li>
+        <a href="/messages" class="default-link link-nav">
+          <ion-icon name="paper-plane-outline"></ion-icon>
+
+          <p class="default-text nav-text" data-i18n="messages"></p>
+        </a>
+      </li>
+
+      <li>
+        <a href="/faq" class="default-link link-nav">
+          <ion-icon name="school-outline"></ion-icon>
+
+          <p class="default-text nav-text" data-i18n="faq"></p>
+        </a>
+      </li>
+      <li>
+        <a href="/settings" class="default-link link-nav">
+          <ion-icon name="settings-outline"></ion-icon>
+          <p class="default-text nav-text" data-i18n="settings"></p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- <button class="btn-mobile-nav">
+      <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+      <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+    </button> -->
+</div>
+<div class="app-layout">
+  <div class="dashboard-nav">
+    <div class="heading-nav">
+      <h1 class="heading-main nav-name" data-i18n="appName"></h1>
+      <button class="btn-mobile-nav">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="main-nav">
+      <ul class="main-nav-list">
+        <li>
+          <a href="/dashboard" class="default-link link-nav selected">
+            <ion-icon name="desktop-outline"></ion-icon>
+            <p class="default-text nav-text" data-i18n="dashboard"></p>
+          </a>
+        </li>
+        <li>
+          <a href="/messages" class="default-link link-nav">
+            <ion-icon name="paper-plane-outline"></ion-icon>
+
+            <p class="default-text nav-text" data-i18n="messages"></p>
+          </a>
+        </li>
+
+        <li>
+          <a href="/faq" class="default-link link-nav">
+            <ion-icon name="school-outline"></ion-icon>
+
+            <p class="default-text nav-text" data-i18n="faq"></p>
+          </a>
+        </li>
+        <li>
+          <a href="/settings" class="default-link link-nav">
+            <ion-icon name="settings-outline"></ion-icon>
+            <p class="default-text nav-text" data-i18n="settings"></p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- <button class="btn-mobile-nav">
+      <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+      <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+    </button> -->
+  </div>
+  <div class="dashboard-section">
+    <div class="header">
+      <h1 class="heading-main heading-dashboard" id="dashboard-heading">
+        <span data-i18n="greetingp1"></span>{{username}}<span
+          data-i18n="greetingp2"
+        ></span>
+      </h1>
+    </div>
+    <div class="dashboard-main-box">
+      <form class="dashboard-box-add-task" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <div class="input-task-box">
+          <div class="input-divider-dashboard">
+            <p class="form-text default-text" data-i18n="task"></p>
+            <input
+              class="input-style"
+              data-i18n-placeholder="task.placeholder"
+              name="task"
+              type="text"
+              required
+            />
+          </div>
+          <div class="input-divider-dashboard">
+            <p class="form-text default-text" data-i18n="deadline"></p>
+
+            <input class="input-style" type="date" name="deadline" required />
+          </div>
+          <div class="input-divider-dashboard">
+            <p class="form-text default-text" data-i18n="priority"></p>
+            <select name="priority" class="dropdown-menu">
+              <option value="normal" data-i18n="priority.normal"></option>
+              <option value="important" data-i18n="priority.important"></option>
+              <option value="urgent" data-i18n="priority.urgent"></option>
+            </select>
+          </div>
+          <div class="controls-dash">
+            <button
+              class="btn form-btn"
+              type="submit"
+              data-i18n="addTask"
+            ></button>
+          </div>
+        </div>
+      </form>
+      <form
+        class="input-divider-dashboard sort"
+        method="GET"
+        action="/dashboard"
+      >
+        <p class="form-text default-text" data-i18n="sortBy"></p>
+        <select class="dropdown-menu" name="sort">
+          <option value="priority" data-i18n="sort.priority"></option>
+          <option value="name" data-i18n="sort.name"></option>
+          <option value="deadline" data-i18n="sort.deadline"></option>
+        </select>
+        <button class="btn form-btn" type="submit" data-i18n="sort"></button>
+      </form>
+
+      <ul class="task-box">
+        {% for t in tasks %} {% set id = t[0] %} {% set text = t[1] %} {% set
+        deadline = t[2] %} {% set priority = t[3] %} {% set status = t[4] %} {%
+        set classlist = priority %} {% if status == 1 %} {% set classlist =
+        'done' %} {% endif %}
+
+        <li class="task {{ classlist }} ">
+          <a class="done-btn" href="/toggle/{{ id }}">
+            <ion-icon
+              name="checkmark-outline"
+              class="checkbox {% if status == 1 %}done-checkmark{% endif %}"
+            ></ion-icon>
+          </a>
+          <div
+            class="task-text default-text {% if status == 1 %}done-text{% endif %}"
+          >
+            {{ text }}
+            <p
+              class="default-text {% if deadline < today and status == 0 %}past-due{% endif %}"
+            >
+              <span data-i18n="dueTo"></span> {{ deadline }}
+            </p>
+          </div>
+
+          <div class="task-controls">
+            <a class="edit" href="/edit/{{ id }}"
+              ><ion-icon name="create-outline"></ion-icon
+            ></a>
+            <a class="delete-task" href="/delete/{{ id }}"
+              ><ion-icon name="trash-bin-outline"></ion-icon
+            ></a>
+          </div>
+        </li>
+
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

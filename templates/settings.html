@@ -1,0 +1,122 @@
+{% extends "base.html"%} {% block title %}Task tracker - Settings{% endblock %} {% block
+content %}
+<div class="dashboard-nav-m">
+  <div class="heading-nav">
+    <h1 class="heading-main nav-name" data-i18n="appName"></h1>
+    <button class="btn-mobile-nav">
+      <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+      <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+    </button>
+  </div>
+  <div class="main-nav">
+    <ul class="main-nav-list">
+      <li>
+        <a href="/dashboard" class="default-link link-nav ">
+          <ion-icon name="desktop-outline"></ion-icon>
+          <p class="default-text nav-text" data-i18n="dashboard"></p>
+        </a>
+      </li>
+      <li>
+        <a href="/messages" class="default-link link-nav">
+          <ion-icon name="paper-plane-outline"></ion-icon>
+
+          <p class="default-text nav-text" data-i18n="messages"></p>
+        </a>
+      </li>
+
+      <li>
+        <a href="/faq" class="default-link link-nav">
+          <ion-icon name="school-outline"></ion-icon>
+
+          <p class="default-text nav-text" data-i18n="faq"></p>
+        </a>
+      </li>
+      <li>
+        <a href="/settings" class="default-link link-nav selected">
+          <ion-icon name="settings-outline"></ion-icon>
+          <p class="default-text nav-text" data-i18n="settings"></p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- <button class="btn-mobile-nav">
+      <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+      <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+    </button> -->
+</div>
+    <div class="app-layout">
+      <div class="dashboard-nav">
+    <div class="heading-nav">
+      <h1 class="heading-main nav-name" data-i18n="appName"></h1>
+      <button class="btn-mobile-nav">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="main-nav">
+      <ul class="main-nav-list">
+        <li>
+          <a href="/dashboard" class="default-link link-nav ">
+            <ion-icon name="desktop-outline"></ion-icon>
+            <p class="default-text nav-text" data-i18n="dashboard"></p>
+          </a>
+        </li>
+        <li>
+          <a href="/messages" class="default-link link-nav">
+            <ion-icon name="paper-plane-outline"></ion-icon>
+
+            <p class="default-text nav-text" data-i18n="messages"></p>
+          </a>
+        </li>
+
+        <li>
+          <a href="/faq" class="default-link link-nav">
+            <ion-icon name="school-outline"></ion-icon>
+
+            <p class="default-text nav-text" data-i18n="faq"></p>
+          </a>
+        </li>
+        <li>
+          <a href="/settings" class="default-link link-nav selected">
+            <ion-icon name="settings-outline"></ion-icon>
+            <p class="default-text nav-text" data-i18n="settings"></p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- <button class="btn-mobile-nav">
+      <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+      <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+    </button> -->
+  </div>
+      <div class="dashboard-section">
+        <h1 class="heading-main" data-i18n="settings"></h1>
+        <p class="error-handling {% if error %}show-error{% endif %}">Erorr</p>
+        <div class="form-box">
+            <form class="form-style" method="POST">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+              <div class="input-divider">
+                <p class="form-text default-text" data-i18n="theme"></p>
+              <select name="theme" class="dropdown-menu">
+                <option value="light">Default</option>
+                <option value="dark">Dark</option>
+              </select>
+              </div>
+              <div class="input-divider">
+                <p class="form-text default-text" data-i18n="language"></p>
+              <select name="language" class="dropdown-menu">
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+              </select>
+              </div>
+              <button class="btn form-btn  " type="submit" data-i18n="saveChanges"></button>
+              <a class="btn delete-btn "  href="/delete_check" data-i18n="deleteAccount"></a>
+              <a class="btn logout-btn" href="/logout" data-i18n="logout"></a>
+              <!-- <div class="extra-box">
+                  <p class="controls-text" data-i18n="withoutChanges"></p>
+                  <a class="back-btn" href="/dashboard" data-i18n="goBack"></a>
+              </div> -->
+            </div>
+      </div>
+    </div>
+ {% endblock %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ session_lang }}" data-theme="{{ session_theme }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='media-queries.css') }}"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static',filename='img/favicon.png') }}"
+    />
+
+    <title>{% block title %}FLASK APP{% endblock %}</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Varela&display=swap");
+    </style>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script>
+      window.APP_CONTEXT = {
+        username: "{{ session_username | default('light') }}",
+        lang: "{{ session_lang | default('en') }}",
+      };
+    </script>
+    <script src="{{url_for('static', filename='js/script.js')}}" defer></script>
+    <script src="{{url_for('static', filename='js/i18n.js')}}"></script>
+  </head>
+
+  <body>
+    {% block content %}{% endblock %}
+  </body>
+</html>
