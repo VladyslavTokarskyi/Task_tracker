@@ -1,2 +1,3 @@
 ﻿# Task_tracker
-Hello guys this is task tracking app where you can create and edit your own to do list .App features authentication :login and sign up options also account deletion.This app lets you create tasks with deadline and priority setting the task will have other color with priority.You can also mark your task as done.App features interface in germand or English and dark or light theme.
+Hello everyone, this is a task tracking app where you can create and manage your own to-do lists. The app includes user authentication with login, sign-up, and account deletion options. You can create tasks with deadlines and priority levels, and tasks change color based on their priority. Tasks can also be marked as completed. The app supports both German and English languages and offers light and dark themes.
+
