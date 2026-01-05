@@ -1,0 +1,5 @@
+MYSQL_HOST=localhost
+MYSQL_USER=user
+MYSQL_PASSWORD=password
+MYSQL_DB=todo_database
+FLASK_SECRET_KEY=secret_key
