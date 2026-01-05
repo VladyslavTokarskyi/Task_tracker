@@ -1,5 +1,5 @@
 flask
-flask_mysqldb
+flask-mysqldb
 python-dotenv
 flask-wtf
 # CSRFProtect

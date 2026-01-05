@@ -102,8 +102,8 @@ def sign_up():
                     "INSERT INTO users (username, password) VALUES (%s, %s)",
                     (username, hashed_password))
                 userids = cur.lastrowid  
-
-                cur.execute("INSERT INTO user_settings (user_id) VALUES (%s)",
+                
+                cur.execute("INSERT INTO user_settings (userid) VALUES (%s)",
                             (userids,))
                 mysql.connection.commit()
                 cur.close()
@@ -146,7 +146,7 @@ def login():
             session["username"] = username
 
             cur.execute(
-                "SELECT theme, language FROM user_settings WHERE user_id = %s",
+                "SELECT theme, language FROM user_settings WHERE userid = %s",
                 (session["userid"],)
             )
 
@@ -318,7 +318,7 @@ def settings():
         cur.execute("""
             UPDATE user_settings
             SET theme = %s, language = %s
-            WHERE user_id = %s
+            WHERE userid = %s
         """, (theme, language, userid))
         mysql.connection.commit()
         cur.close()
