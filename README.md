@@ -44,6 +44,7 @@ CREATE TABLE tasks (
     PRIMARY KEY (id),
     KEY userid (userid)
 );
+```
 3. In the `.env` file configure your database like this:
 
 ```env
@@ -55,5 +56,6 @@ FLASK_SECRET_KEY=secret_key
 ```
 
 4. you can start using it
+
 
 
