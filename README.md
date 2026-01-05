@@ -3,6 +3,8 @@ Hello everyone, this is a task tracking app where you can create and manage your
 
 This project is also hosted on vladyslavtokarskyi.de if you want to try it without having to setup Database and virtual environment yourself.
 
+# Get started
+
 
 
 
