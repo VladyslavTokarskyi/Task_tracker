@@ -27,7 +27,6 @@ function applyTranslations() {
   });
 }
 
-/* ✅ THIS IS THE KEY PART */
 document.addEventListener("DOMContentLoaded", () => {
   if (window.APP_CONTEXT?.lang) {
     loadLanguage(window.APP_CONTEXT.lang);

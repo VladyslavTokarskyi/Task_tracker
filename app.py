@@ -157,6 +157,7 @@ def login():
                 session["lang"] = settings[1]
             else:
                 session["lang"] = "en"
+                session["theme"] = "light"
 
             cur.close()
             return redirect("/dashboard")
